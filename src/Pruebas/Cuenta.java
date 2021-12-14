@@ -290,7 +290,34 @@ public class Cuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
+        //Si el tamaño del arreglo es mayor o igual a 0 ejecutamos una condición
+        if(tamaño>=0)
+        {
+            int cantFilas = jTable1.getRowCount();
+            for (int i = cantFilas - 1; i >= 0; i--)
+            {
+                modelo.removeRow(i);//borra los demas registros para que podamos solo visualizar el buscado
+                //ojo, no los elimina, tan solo es para que se muestre el dato buscado
+            }
+            
+            int i;
+            int n = Integer.parseInt(jTextField4.getText());
+            i = HashCuenta.buscaHash(h, tamaño, n,jTable1);
+            
+            if (i == -1)
+            {
+                javax.swing.JOptionPane.showMessageDialog(null, "Número no encontrado");
+            }
+            else
+            {
+                javax.swing.JOptionPane.showMessageDialog(null, "Número encontrado");
+            }
+        }
+        
+        else
+        {
+           javax.swing.JOptionPane.showMessageDialog(null, "NO EXISTE REGISTROS");
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed

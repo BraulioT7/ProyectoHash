@@ -1,6 +1,9 @@
 
 package Clases;
 
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
 public class HashCuenta {
 
     int dato;
@@ -39,6 +42,46 @@ public class HashCuenta {
         } else {
             javax.swing.JOptionPane.showMessageDialog(null, "¡Tabla llena!");
         }
+    }
+    public static int buscaHash(HashCuenta[] h, int m, int n, JTable t) {
+     
+      DefaultTableModel modelo1=(DefaultTableModel)t.getModel();
+
+        int j = funcion(n, m);
+        while (j < m) {
+            if (h[j].estado == 0) {
+                return -1;
+            } else if (h[j].dato == n) {
+                if (h[j].estado == 1) {
+                    return -1;
+                } else {
+                   modelo1.addRow(new Object[]{h[j].dato,h[j].cliente,h[j].saldo});
+                    return j;
+                }
+            } else {
+                j++;
+            }
+        }
+        return -1;
+
+    }
+    public static int buscaHash(HashCuenta[] h, int m, int n) {
+        int j = funcion(n, m);
+        while (j < m) {
+            if (h[j].estado == 0) {
+                return -1;
+            } else if (h[j].dato == n) {
+                if (h[j].estado == 1) {
+                    return -1;
+                } else {
+                    return j;
+                }
+            } else {
+                j++;
+            }
+        }
+        return -1;
+
     }
 
 }
