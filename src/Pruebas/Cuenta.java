@@ -286,7 +286,16 @@ public class Cuenta extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-
+      if(tamaño>=0){
+            int cantF = jTable1.getRowCount();
+            for (int i = cantF - 1; i >= 0; i--) {
+                modelo.removeRow(i);
+            }
+        }
+        int n = Integer.parseInt(jTextField4.getText());       
+        HashCuenta.eliminaHash(h,tamaño,n);
+        javax.swing.JOptionPane.showMessageDialog(null, "CLAVE Eliminada");
+                                               
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
